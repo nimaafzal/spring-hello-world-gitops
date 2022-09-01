@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-helloworld-deployment
+  labels:
+    app: spring-helloworld-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-helloworld-deployment
+  template:
+    metadata:
+      labels:
+        app: spring-helloworld-deployment
+    spec:
+      containers:
+      - name: spring-helloworld-deployment
+        image: ghcr.io/nimaafzal/spring-hello-world-gitops:0.0.5-hello-world
+        ports:
+        - containerPort: 8080
